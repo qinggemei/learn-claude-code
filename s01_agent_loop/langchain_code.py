@@ -78,6 +78,7 @@ model_with_tools = model.bind_tools(tools)
 def agent_loop(messages: list):
     while True:
         # 返回的是工具名与参数
+        # AiMessage
         response = model_with_tools.invoke(messages)
 
         messages.append(response)
@@ -90,6 +91,7 @@ def agent_loop(messages: list):
             print(f"\033[33m$ {tool_call["args"]['command']}\033[0m")
             tool = tool_dict[tool_call["name"]]
             # 调用工具并返回结果
+            # ToolMessage
             tool_response = tool.invoke(tool_call)
             # 工具返回结果
             print(tool_response.content)
