@@ -77,7 +77,7 @@ model_with_tools = model.bind_tools(tools)
 
 def agent_loop(messages: list):
     while True:
-        # 返回的是工具名与参数
+        # 返回的是工具名与参数 / 返回消息
         # AiMessage
         response = model_with_tools.invoke(messages)
 
